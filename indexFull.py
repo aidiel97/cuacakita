@@ -47,4 +47,5 @@ def get_data():
 
 
 if __name__ == "__main__":
-    app.run(port=80,debug=True)
+    # app.run(port=80,debug=True) //untuk hosting
+    app.run()
