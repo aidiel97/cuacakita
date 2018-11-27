@@ -5,7 +5,6 @@ from data import Data
 # import operator,re
 import random
 from translator import Translate
-import pytz
 request = RequestAPI()
 check = Check()
 
@@ -35,13 +34,14 @@ class Data_processing:
 	def dataProcessing(self,array_data):
 		
 		print("\n\n"+ "Memulai pemrosesan data.....")
-		tz = pytz.timezone('Asia/Jakarta')
+		os.envron['TZ'] = 'Asia/Jakarta'
+		time.tzset()
 
-		tgl_sekarang = str(datetime.datetime.now(tz))[:10]
-		today = datetime.datetime.today(tz) 
+		tgl_sekarang = str(datetime.datetime.now())[:10]
+		today = datetime.datetime.today() 
 		tomorrow = today + datetime.timedelta(1)
 		tgl_besok = str(datetime.datetime.strftime(tomorrow,'%Y-%m-%d'))[:10]
-		jam_sekarang = int((str(datetime.datetime.now(tz))[11:])[:2])
+		jam_sekarang = int((str(datetime.datetime.now())[11:])[:2])
 		# print(tgl_besok)
 		# print(jam_sekarang)
 
