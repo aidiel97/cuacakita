@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
+
+    <title>CuacaKita Dashboard</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/custom.css">
+    <link rel="stylesheet" href="../static/css/font-awesome.css" />
+    <link rel="stylesheet" href="../static/css/font-awesome.min.css" />
+  </head>
+
+  <body>
+    <div class="rightContainer">
+      <p id="judul">Memproses data kembali setelah :</p>
+      <p id="demo">0h 0m 0s</p> 
+    </div>
+    <div class="leftContainer">
+      <!-- <h1>Hasil</h1> -->
+      <table>
+        <tr>
+          <td><img src="../static/css/image/temperature.png"></td>
+          <td><p id="suhu">Memproses..</p></td>
+        </tr>
+        <tr>
+          <td><img src="../static/css/image/rain.png"></td>
+          <td><p id="hujan">Memproses..</p></td>
+        </tr>
+        <tr>
+          <td><img src="../static/css/image/umbrella.png"></td>
+          <td><p id="kelembaban">Memproses..</p></td>
+        </tr>
+        <tr>
+          <td><img src="../static/css/image/wind-mill.png"></td>
+          <td><p id="angin">Memproses..</p></td>
+        </tr>
+      </table>
+    </div>
+    <div class="lbContainer">
+      <p id="judul">Hasil Pembangkitan Kalimat :</p>
+      <p id="hasil">Memproses..</p>
+    </div>
+   <!-- <p id="waktu"></p> -->  
+  
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!-- <script src="../static/js/bootstrap.min.js"></script> -->
+    <script src="../static/js/jquery.min.js"></script>
+    <script>
+      $(function(){
+        var countDownDate = null
+          function get_data()
+          {
+            // $('#dataText').html("Memproses data...")
+            $.ajax({
+              url: '/get_data',
+              // data: form_data,
+              // contentType: false,
+              // cache: false,
+              // processData: false,
+              // async: false,
+              dataType:"Json",
+              type: 'GET',
+              success: function(response){
+                 console.log(response)
+                 console.log("Memproses...")
+                 // $('#dataText').empty()
+                 $('#hasil').html(response.sentence)
+                 $('#suhu').html(response.suhu)
+                 $('#hujan').html(response.hujan)
+                 $('#kelembaban').html(response.kelembaban)
+                 $('#angin').html(response.angin)
+                 $('#waktu').html(response.waktu)
+                 countDownDate = new Date(response.waktu).getTime();
+                 
+              },failed: function(response){
+                console.log(response)
+                console.log("Proses Gagal...")
+              }
+            });
+          }
+          get_data();
+          var x = setInterval(function() {
+            if (countDownDate !== null) {
+                // Get todays date and time
+              var now = new Date().getTime();
+
+              // Find the distance between now and the count down date
+              var distance = countDownDate - now;
+              console.log(countDownDate)
+
+              // Time calculations for days, hours, minutes and seconds
+              var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+              var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+              var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+              var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+              // Display the result in the element with id="demo"
+              document.getElementById("demo").innerHTML = hours + "h "
+              + minutes + "m " + seconds + "s ";
+
+              // If the count down is finished, write some text 
+            }
+            if (distance < 0) {
+              get_data()
+            }
+          }, 1000);
+
+
+          //jika diminta update data setiap 60 detik sekali
+          // setInterval(function(){
+          //   get_data()
+          // }, 60000)
+      });
+      console.log("aaa")
+    </script>
+  </body>
+</html>
