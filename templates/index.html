@@ -79,6 +79,7 @@
                  $('#kelembaban').html(response.kelembaban)
                  $('#angin').html(response.angin)
                  $('#waktu').html(response.waktu)
+                 console.log(response.waktu)
                  countDownDate = new Date(response.waktu).getTime();
                  
               },failed: function(response){
@@ -109,7 +110,7 @@
 
               // If the count down is finished, write some text 
             }
-            if (distance < 0) {
+            if (distance = 0) {
               get_data()
             }
           }, 1000);
