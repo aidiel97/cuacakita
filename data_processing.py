@@ -35,7 +35,7 @@ class Data_processing:
 	def dataProcessing(self,array_data):
 		
 		print("\n\n"+ "Memulai pemrosesan data.....")
-		os.envron['TZ'] = 'Asia/Jakarta'
+		os.environ['TZ'] = 'Asia/Jakarta'
 		time.tzset()
 
 		tgl_sekarang = str(datetime.datetime.now())[:10]
