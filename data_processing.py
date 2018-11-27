@@ -38,7 +38,7 @@ class Data_processing:
 		tz = pytz.timezone('Asia/Jakarta')
 
 		tgl_sekarang = str(datetime.datetime.now(tz))[:10]
-		today = datetime.datetime.today(tz) 
+		today = datetime.datetime.now(tz) 
 		tomorrow = today + datetime.timedelta(1)
 		tgl_besok = str(datetime.datetime.strftime(tomorrow,'%Y-%m-%d'))[:10]
 		jam_sekarang = int((str(datetime.datetime.now(tz))[11:])[:2])
@@ -171,6 +171,8 @@ class Data_processing:
 		return thp7
 
 # a = Data_processing()
-# # print(a.getArray())
+# # # print(a.getArray())
 # x =a.dataProcessing(a.getArray())
 # print(x)
+today = datetime.datetime.now() 
+print(today)
