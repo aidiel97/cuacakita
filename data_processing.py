@@ -5,6 +5,7 @@ from data import Data
 # import operator,re
 import random
 from translator import Translate
+import os
 request = RequestAPI()
 check = Check()
 
