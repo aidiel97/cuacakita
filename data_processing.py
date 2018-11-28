@@ -15,15 +15,15 @@ class Data_processing:
 	def getArray(self):
 		print("Mengumpulkan data mentah.....")
 		request.get_data(request.get_by_city('Medan'), array_data)
-		request.get_data(request.get_by_city('Jakarta'), array_data)
-		request.get_data(request.get_by_city('Surabaya'), array_data)
-		request.get_data(request.get_by_city('Bandung'), array_data)
-		request.get_data(request.get_by_city('Makassar'), array_data)
-		request.get_data(request.get_by_city('Semarang'), array_data)
-		request.get_data(request.get_by_city('Palembang'), array_data)
-		request.get_data(request.get_by_city('Balikpapan'), array_data)
-		request.get_data(request.get_by_city('Ambon'), array_data)
-		request.get_data(request.get_by_city('Denpasar'), array_data)
+		# request.get_data(request.get_by_city('Jakarta'), array_data)
+		# request.get_data(request.get_by_city('Surabaya'), array_data)
+		# request.get_data(request.get_by_city('Bandung'), array_data)
+		# request.get_data(request.get_by_city('Makassar'), array_data)
+		# request.get_data(request.get_by_city('Semarang'), array_data)
+		# request.get_data(request.get_by_city('Palembang'), array_data)
+		# request.get_data(request.get_by_city('Balikpapan'), array_data)
+		# request.get_data(request.get_by_city('Ambon'), array_data)
+		# request.get_data(request.get_by_city('Denpasar'), array_data)
 
 		# d = Data()
 		# array_data = d.getSampleData()
@@ -37,49 +37,44 @@ class Data_processing:
 		print("\n\n"+ "Memulai pemrosesan data.....")
 		tz = pytz.timezone('Asia/Jakarta')
 
-		tgl_sekarang = str(datetime.datetime.now(tz))[:10]
-		today = datetime.datetime.now(tz) 
+		# today = datetime.datetime.now(tz) 
+		today = datetime.datetime(2018, 11, 28, 21, 35, 50, 593000) 
+		# print(today)
+		# exit()
+		tgl_sekarang = str(today)[:10]
 		tomorrow = today + datetime.timedelta(1)
 		tgl_besok = str(datetime.datetime.strftime(tomorrow,'%Y-%m-%d'))[:10]
-		jam_sekarang = int((str(datetime.datetime.now(tz))[11:])[:2])
+		jam_sekarang = int((str(today)[11:])[:2])
 		# print(tgl_besok)
 		# print(jam_sekarang)
 
 		# membuang data yang bukan hari ini
 		i=0
 		while i < len(array_data):	
+			# print("sekarang jam: ",array_data[i]['waktu'])
 			waktu = str(array_data[i]['waktu'])
+			jam = int((waktu[11:])[:2])
 			tanggal = waktu[:10]
 			
-			if(jam_sekarang >= 21):
-				if(tanggal == tgl_besok):
-					i += 1
-				else:
-					del array_data[i]
+			if(jam_sekarang >= 21 and jam == 0 and tanggal == tgl_besok):
+				i += 1
+			elif(tanggal != tgl_sekarang):
+				i += 1
 			else:
-				if(tanggal != tgl_sekarang):
-					del array_data[i]
-				else:
-					i += 1
-		
+				del array_data[i]
+
 		# membuang data lampau
 		j=0
 		while j < len(array_data):
 			waktu = str(array_data[j]['waktu'])
 			jam = int((waktu[11:])[:2])
-			# exit()
-
-			if(jam_sekarang >= 21):
-				if(jam == "00"):
-					j += 1
-				else:
-					del array_data[j]
+			tanggal = waktu[:10]
+			if(jam_sekarang >= 21 and jam == 0 and tanggal == tgl_besok):
+				j += 1
+			elif(jam <= jam_sekarang):
+				del array_data[j]
 			else:
-				if(jam <= jam_sekarang):
-					# print("jam ", jam, " dibuang")
-					del array_data[j]
-				else:
-					j += 1
+				j += 1
 
 		max = 0
 		k = 0
@@ -96,7 +91,7 @@ class Data_processing:
 			choosen = array_data[k] 
 		else:
 			choosen = random.choice(array_data)
-		
+	
 		# get sunrise&sunset time
 		# sunrise, sunset = request.get_syssun(request.get_sys(choosen['kota']))
 		# r = int((str(sunrise)[11:])[:2])
@@ -170,9 +165,9 @@ class Data_processing:
 		thp7 = thp6.replace("x_kelembapan",kelembapan)
 		return thp7
 
-# a = Data_processing()
+a = Data_processing()
 # # # print(a.getArray())
-# x =a.dataProcessing(a.getArray())
-# print(x)
-today = datetime.datetime.now() 
-print(today)
+x =a.dataProcessing(a.getArray())
+print(x)
+# today = datetime.datetime.now() 
+# print(today)
