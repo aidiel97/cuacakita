@@ -39,7 +39,7 @@ def post():
 	
 	tweepyapi.update_status(sentence)
 	print("tweet berhasil di post :", sentence)
-	return False
+	return "berhasil"
 
 @app.route("/get_data", methods=["GET"])
 def get_data():
