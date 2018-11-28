@@ -26,8 +26,14 @@ def get_data():
 	post = tweet_poster()
 	data = text.getData()
 
+	kota = data[0]['kota']
 	suhu = str(data[0]['suhu']) + " °C"
-	hujan = str(data[0]['hujan']) + " mm"
+
+	if(data[0]['hujan'] == ""):
+		hujan = "none"	
+	else:
+		hujan = str(data[0]['hujan']) + " mm"
+
 	kelembaban = str(data[0]['kelembapan']) + " %"
 	angin = data[0]['kec_angin'] +", "+ data[0]['a_angin']
 	waktu = data[0]['waktu']
@@ -36,6 +42,7 @@ def get_data():
 	# print("dataaa jkahd")
 	post.post(sentence)
 	return jsonify({
+		'kota' :kota,
 		'sentence': sentence,
 		'waktu': waktu,
 		'suhu': suhu,
@@ -50,3 +57,6 @@ if __name__ == "__main__":
     # app.run(port=80,debug=True) #untuk local
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port = port)
+
+
+ # cpanel.ukmialkhuarizmi.or.id

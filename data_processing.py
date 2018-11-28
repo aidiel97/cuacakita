@@ -15,15 +15,15 @@ class Data_processing:
 	def getArray(self):
 		print("Mengumpulkan data mentah.....")
 		request.get_data(request.get_by_city('Medan'), array_data)
-		# request.get_data(request.get_by_city('Jakarta'), array_data)
-		# request.get_data(request.get_by_city('Surabaya'), array_data)
-		# request.get_data(request.get_by_city('Bandung'), array_data)
-		# request.get_data(request.get_by_city('Makassar'), array_data)
-		# request.get_data(request.get_by_city('Semarang'), array_data)
-		# request.get_data(request.get_by_city('Palembang'), array_data)
-		# request.get_data(request.get_by_city('Balikpapan'), array_data)
-		# request.get_data(request.get_by_city('Ambon'), array_data)
-		# request.get_data(request.get_by_city('Denpasar'), array_data)
+		request.get_data(request.get_by_city('Jakarta'), array_data)
+		request.get_data(request.get_by_city('Surabaya'), array_data)
+		request.get_data(request.get_by_city('Bandung'), array_data)
+		request.get_data(request.get_by_city('Makassar'), array_data)
+		request.get_data(request.get_by_city('Semarang'), array_data)
+		request.get_data(request.get_by_city('Palembang'), array_data)
+		request.get_data(request.get_by_city('Balikpapan'), array_data)
+		request.get_data(request.get_by_city('Ambon'), array_data)
+		request.get_data(request.get_by_city('Denpasar'), array_data)
 
 		# d = Data()
 		# array_data = d.getSampleData()
@@ -37,8 +37,8 @@ class Data_processing:
 		print("\n\n"+ "Memulai pemrosesan data.....")
 		tz = pytz.timezone('Asia/Jakarta')
 
-		# today = datetime.datetime.now(tz) 
-		today = datetime.datetime(2018, 11, 28, 21, 35, 50, 593000) 
+		today = datetime.datetime.now(tz) 
+		# today = datetime.datetime(2018, 11, 28, 21, 35, 50, 593000) 
 		# print(today)
 		# exit()
 		tgl_sekarang = str(today)[:10]
@@ -165,9 +165,9 @@ class Data_processing:
 		thp7 = thp6.replace("x_kelembapan",kelembapan)
 		return thp7
 
-a = Data_processing()
+# a = Data_processing()
 # # # print(a.getArray())
-x =a.dataProcessing(a.getArray())
-print(x)
+# x =a.dataProcessing(a.getArray())
+# print(x)
 # today = datetime.datetime.now() 
 # print(today)
