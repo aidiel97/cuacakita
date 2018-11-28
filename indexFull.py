@@ -38,6 +38,7 @@ def post(self):
 		
 		tweepyapi.update_status(sentence)
 		print("tweet berhasil di post :", sentence)
+		return False
 
 @app.route("/get_data", methods=["GET"])
 def get_data():
@@ -74,9 +75,9 @@ def get_data():
 
 
 if __name__ == "__main__":
-    app.run(port=80,debug=True) #untuk local
-    # port = int(os.environ.get("PORT", 5000))
-    # app.run(host="0.0.0.0", port = port)
+    # app.run(port=80,debug=True) #untuk local
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port = port)
 
 
 
