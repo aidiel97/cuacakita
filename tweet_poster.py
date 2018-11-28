@@ -1,9 +1,8 @@
 import tweepy
 from RequestAPI import RequestAPI
-from text_generator import Text_generator
 
 class tweet_poster:
-	def post(self):
+	def post(self, sentence):
 		consumer_key = "k2HFUcJA2CMcb2JwWnFYXmwGs"
 		consumer_secret = "ZnedSsVh8nAJrhkwMbyITCJsTCP4D4a8VO2zhr7Qj5kcya1UN1"
 
@@ -14,13 +13,11 @@ class tweet_poster:
 		auth.set_access_token(access_token, access_token_secret)
 
 		tweepyapi = tweepy.API(auth)
-		text_gen = Text_generator()
+		# text_gen = Text_generator()
 
-		data = text_gen.getData()
-		sentence = text_gen.generator(data)
-		
+		# sentence = text_gen.cleanedData()
+		# text_gen.cleanedData()
+
 		tweepyapi.update_status(sentence)
 		print("tweet berhasil di post :", sentence)
 
-t = tweet_poster()
-t.post()
