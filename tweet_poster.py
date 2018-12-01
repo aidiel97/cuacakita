@@ -47,3 +47,5 @@ class tweet_poster:
 
 p = tweet_poster()
 p.postm()
+
+# web: python3 indexFull.py
