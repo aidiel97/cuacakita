@@ -1,1 +1,1 @@
-web: python indexFull.py
+web: python3 indexFull.py

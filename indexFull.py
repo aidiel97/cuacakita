@@ -18,7 +18,7 @@ def allowed_file(filename):
 
 @app.route("/")
 def main():
-    return render_template('index.html')
+	return render_template('index.html')
 
 @app.route("/post")
 def post():

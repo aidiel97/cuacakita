@@ -45,7 +45,4 @@ class tweet_poster:
 			a+=1
 			time.sleep(INTERVAL)
 
-p = tweet_poster()
-p.postm()
-
 # web: python3 indexFull.py
