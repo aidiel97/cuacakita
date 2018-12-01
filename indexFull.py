@@ -62,7 +62,7 @@ def get_data():
 
 	sentence = text.generator(data)
 	# print("dataaa jkahd")
-	# post.post(sentence)
+	post.post(sentence)
 	return jsonify({
 		'kota' :kota,
 		'sentence': sentence,
