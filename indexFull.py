@@ -18,6 +18,7 @@ def allowed_file(filename):
 
 @app.route("/")
 def main():
+	tweet_poster()
     return render_template('index.html')
 
 @app.route("/post")
@@ -45,7 +46,7 @@ def post():
 def get_data():
 
 	text = Text_generator()
-	post = tweet_poster()
+	# post = tweet_poster()
 	data = text.getData()
 
 	kota = data[0]['kota']
