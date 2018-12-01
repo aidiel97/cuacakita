@@ -38,7 +38,7 @@ class tweet_poster:
 
 		# data = text_gen.getData()
 		# sentence = text_gen.generator(data)
-		a = 35
+		a = 100
 		while True:
 			tweepyapi.update_status(a)
 			print("tweet berhasil di post :", a)

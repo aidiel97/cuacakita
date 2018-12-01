@@ -1,1 +1,1 @@
-worker : python3 tweet_poster.py
+worker : python tweet_poster.py
