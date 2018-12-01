@@ -18,7 +18,6 @@ def allowed_file(filename):
 
 @app.route("/")
 def main():
-	tweet_poster()
     return render_template('index.html')
 
 @app.route("/post")
