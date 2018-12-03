@@ -20,7 +20,7 @@ def allowed_file(filename):
 def main():
     return render_template('index.html')
 
-@app.route("/post",methods=["POST"])
+@app.route("/post")
 def post():
 	consumer_key = "k2HFUcJA2CMcb2JwWnFYXmwGs"
 	consumer_secret = "ZnedSsVh8nAJrhkwMbyITCJsTCP4D4a8VO2zhr7Qj5kcya1UN1"
