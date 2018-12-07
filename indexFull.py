@@ -32,8 +32,8 @@ def post():
 	auth.set_access_token(access_token, access_token_secret)
 
 	tweepyapi = tweepy.API(auth)
-	text_gen = Text_generator()
 
+	text_gen = Text_generator()
 	data = text_gen.getData()
 	sentence = text_gen.generator(data)
 	
@@ -62,7 +62,7 @@ def get_data():
 
 	sentence = text.generator(data)
 	# print("dataaa jkahd")
-	post.post(sentence)
+	# post.post(sentence)
 	return jsonify({
 		'kota' :kota,
 		'sentence': sentence,

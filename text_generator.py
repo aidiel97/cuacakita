@@ -42,7 +42,8 @@ class Text_generator:
 			waktu = "pukul 00.00 nanti"
 		else:
 			time = str(sample_array[0]['jam']) + ':00:00'
-			now = str(datetime.now().time()).split('.', 1)[0]
+			tz = pytz.timezone('Asia/Jakarta')
+			now = str(datetime.now(tz).time()).split('.', 1)[0]
 			FMT = '%H:%M:%S'
 			tmdelta = datetime.strptime(time, FMT) - datetime.strptime(now, FMT)
 			tdua = ":"
@@ -173,9 +174,9 @@ class Text_generator:
 		
 		return keterangan_temp, keterangan
 
-# a = Text_generator()
-# x = a.getData()
-# print(a.generator(x))
+a = Text_generator()
+x = a.getData()
+print(a.generator(x))
 # time = str(x[0]['jam']) + ':00:00'
 # now = str(datetime.now().time()).split('.', 1)[0]
 # FMT = '%H:%M:%S'
