@@ -174,9 +174,9 @@ class Text_generator:
 		
 		return keterangan_temp, keterangan
 
-a = Text_generator()
-x = a.getData()
-print(a.generator(x))
+# a = Text_generator()
+# x = a.getData()
+# print(a.generator(x))
 # time = str(x[0]['jam']) + ':00:00'
 # now = str(datetime.now().time()).split('.', 1)[0]
 # FMT = '%H:%M:%S'
