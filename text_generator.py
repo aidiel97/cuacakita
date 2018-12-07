@@ -53,13 +53,13 @@ class Text_generator:
 			menit = str(tmdelta)[2:].split(tdua, 2)[0]
 			if (jam == "0"): 
 				if(menit[:1] == "0"):
-					beda = menit[1:] + " menit"
+					beda = menit[1:] + " menit" + str(tmdelta)[5:] + " detik"
 				else:
 					beda = menit + " menit"
 			elif(jam == "0" and menit =="00"):
 				beda = str(tmdelta)[5:] + " detik"
 			else:
-				beda = jam + " jam"
+				beda = jam + " jam" + menit + " menit" + str(tmdelta)[5:] + " detik"
 
 			waktu = str(beda) + " kedepan"
 
