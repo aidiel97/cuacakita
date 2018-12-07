@@ -60,8 +60,28 @@
     <!-- <script src="../static/js/bootstrap.min.js"></script> -->
     <script src="../static/js/jquery.min.js"></script>
     <script>
+        var urlnya = 'static/image/night-normal.jpg';
       $(function(){
         var countDownDate = null
+        const hours = new Date().getHours()
+        // const hours = 17;
+        // console.log(hours)
+        if(hours>=5 && hours<11){
+            // $('html').css("background-image","url('"+urlnya+"')")
+            $('html').removeClass('bgmalam').addClass("bgpagi");
+        }
+        else if(hours>=11 && hours<16){
+            $('html').removeClass('bgpagi').addClass("bgsiang");
+        }
+        else if(hours>=16 && hours<18){
+            $('html').removeClass('bgsiang').addClass("bgsore");
+        }
+        else if(hours>=18 && hours <5){
+            $('html').removeClass('bgsore').addClass("bgmalam");
+        }
+        else{
+            $('html').addClass("bgmalam");
+        }
           function get_data()
           {
             // $('#dataText').html("Memproses data...")

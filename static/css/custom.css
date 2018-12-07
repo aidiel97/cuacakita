@@ -59,7 +59,7 @@
 /* Sticky footer styles
 -------------------------------------------------- */
 
-html { 
+/*html { 
   background: url("image/night-normal.jpg") no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -68,6 +68,47 @@ html {
   position: relative;
   min-height: 100%;
 }
+*/
+.bgsore { 
+  background: url("image/evening-normal.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  position: relative;
+  min-height: 100%;
+}
+
+.bgmalam { 
+  background: url("image/night-normal.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  position: relative;
+  min-height: 100%;
+}
+
+.bgpagi { 
+  background: url("image/morning-normal.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  position: relative;
+  min-height: 100%;
+}
+
+.bgsiang { 
+  background: url("image/day-normal.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  position: relative;
+  min-height: 100%;
+}
+
 
 body {
 /*  background-image: url("night-normal.jpg");
