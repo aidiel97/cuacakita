@@ -42,7 +42,7 @@ class Text_generator:
 		if(sample_array[0]['jam'] == 0):
 			waktu = "pukul 00.00 nanti"
 		else:
-			time = str(sample_array[0]['jam']) + ':00:00'
+			time = str(sample_array[0]['jam']) + ':01:00'
 			tz = pytz.timezone('Asia/Jakarta')
 			now = str(datetime.now(tz).time()).split('.', 1)[0]
 			FMT = '%H:%M:%S'
