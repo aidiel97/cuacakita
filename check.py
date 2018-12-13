@@ -13,9 +13,9 @@ class Check:
 
 		return k_suhu
 
-	def check_suhu_normal(self, suhu, kota):
+	def check_suhu_normal(self, suhu, kota): #https://id.climate-data.org
 		if(kota=='medan' or kota=='jakarta' or kota=='surabaya' or kota=='makassar' or kota=='semarang' or kota=='palembang' or kota=='denpasar'):
-			if(suhu >= 34):
+			if(suhu >= 32):
 				return 4
 			else:
 				return 0
