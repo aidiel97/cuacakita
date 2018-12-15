@@ -59,9 +59,9 @@ class Data_processing:
 			if(jam_sekarang >= 21 and jam == 0 and tanggal == tgl_besok):
 				i += 1
 			elif(tanggal != tgl_sekarang):
-				i += 1
-			else:
 				del array_data[i]
+			else:
+				i += 1
 
 		# membuang data lampau
 		j=0
@@ -165,9 +165,9 @@ class Data_processing:
 		thp7 = thp6.replace("x_kelembapan",kelembapan)
 		return thp7
 
-# a = Data_processing()
-# # # print(a.getArray())
-# x =a.dataProcessing(a.getArray())
-# print(x)
+a = Data_processing()
+# print(a.getArray())
+x =a.dataProcessing(a.getArray())
+print(x)
 # today = datetime.datetime.now() 
 # print(today)
