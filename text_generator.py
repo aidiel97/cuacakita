@@ -59,7 +59,7 @@ class Text_generator:
 			elif(jam == "0" and menit =="00"):
 				beda = str(tmdelta)[5:] + " detik"
 			else:
-				if(menit == "00"):
+				if(menit == "00" or menit == ""):
 					beda = jam + " jam"
 				else:
 					beda = jam + " jam " + menit + " menit"
