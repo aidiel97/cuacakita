@@ -2,11 +2,11 @@ class Check:
 	def check_suhu(self, suhu):
 		if suhu<=10:
 			k_suhu = "sangat dingin"
-		elif suhu>10 and suhu<=20:
+		elif suhu>10 and suhu<=19:
 			k_suhu = "dingin"
-		elif suhu>20 and suhu<=30:
+		elif suhu>19 and suhu<=26:
 			k_suhu = "normal"
-		elif suhu>30 and suhu<=40:
+		elif suhu>26 and suhu<=33:
 			k_suhu = "panas"
 		else:
 			k_suhu = "sangat panas"
@@ -15,12 +15,12 @@ class Check:
 
 	def check_suhu_normal(self, suhu, kota): #https://id.climate-data.org
 		if(kota=='medan' or kota=='jakarta' or kota=='surabaya' or kota=='makassar' or kota=='semarang' or kota=='palembang' or kota=='denpasar'):
-			if(suhu >= 32):
+			if(suhu >= 32 or suhu < 21):
 				return 4
 			else:
 				return 0
 		elif(kota=='ambon' or kota=='bandung' or kota=='balikpapan'):
-			if(suhu > 30):
+			if(suhu > 30 or suhu < 18):
 				return 4
 			else:
 				return 0
@@ -28,12 +28,16 @@ class Check:
 			return 0;
 
 	def check_kelembapan(self, kelembapan):
-		if kelembapan < 80 :
+		if kelembapan < 70 :
+			k_kelembapan = "sangat rendah"
+		elif kelembapan >= 70 and kelembapan <= 80 :
 			k_kelembapan = "rendah"
-		elif kelembapan>=80 and kelembapan<=88:
+		elif kelembapan > 80 and kelembapan <= 90:
 			k_kelembapan = "normal"
-		elif kelembapan > 88:
+		elif kelembapan > 90 and kelembapan <= 95:
 			k_kelembapan = "tinggi"
+		else:
+			k_kelembapan = "sangat tinggi"
 
 		return k_kelembapan
 
@@ -64,12 +68,18 @@ class Check:
 		return hasil
 
 	def check_kecepatanangin(self, kec):
-		if kec <= 3:
+		if kec == 0:
+			k_kec = "sangat tenang"
+		elif kec > 0 and kec <= 5:
 			k_kec = "pelan"
-		elif kec >=3 and kec <= 6: 
+		elif kec > 5 and kec <= 8: 
 			k_kec = "sedang"
-		else:
+		elif kec > 8 and kec <= 11:
+			k_kec = "cukup kencang"
+		elif kec > 11 and kec <= 17:
 			k_kec = "kencang"
+		else:
+			k_kec = "sangat kencang"
 
 		return k_kec
 

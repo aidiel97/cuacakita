@@ -88,17 +88,19 @@ class RequestAPI:
 			if(c >= 800):
 				urgensi = check.check_suhu_normal(suhu, n_kota)
 			elif(c >= 300 and c <= 312):
-				if(c <= 312):
-					urgensi = 0
-				else:
+				if(c < 312):
 					urgensi = 1
+				else:
+					urgensi = 0
 			elif(c >= 500 and c <= 531):
-				if(c >= 522):
+				if(c <= 511 and c >= 503):
+					urgensi = 4
+				elif(c == 522):
 					urgensi = 2
 				else:
 					urgensi = 0
 			elif(c >= 200 and c <= 232):
-				if(c >= 212):
+				if(c >= 211):
 					urgensi = 3
 				else:
 					urgensi = 0

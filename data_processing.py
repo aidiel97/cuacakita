@@ -99,6 +99,7 @@ class Data_processing:
 
 		# suhu_sebelum = 0
 		# cuaca_sebelum = ""
+		print(choosen)
 		data_process = []
 		for x in range(len(array_data)):
 			if(array_data[x]['kota'] == choosen['kota']):
@@ -127,7 +128,7 @@ class Data_processing:
 				if(hujan != ""):
 					k_hujan = check.check_hujan(int(hujan))
 				else:
-					k_hujan = "tidak terdeteksi oleh sensor"
+					k_hujan = ""
 
 				print("-----LEXICALISASI DATA SUKSES-----")
 
@@ -152,7 +153,7 @@ class Data_processing:
 
 		del array_data[:]
 		print("-----PEMROSESAN DATA SUKSES-----")
-
+		print(data_process)
 		return data_process
 
 	def kalimatTemplate(self,kota,waktu,cuaca,suhu,angin,aangin,kelembapan,sentence):
@@ -165,9 +166,9 @@ class Data_processing:
 		thp7 = thp6.replace("x_kelembapan",kelembapan)
 		return thp7
 
-a = Data_processing()
+# a = Data_processing()
 # print(a.getArray())
-x =a.dataProcessing(a.getArray())
-print(x)
+# a.dataProcessing(a.getArray())
+# print(x)
 # today = datetime.datetime.now() 
 # print(today)
