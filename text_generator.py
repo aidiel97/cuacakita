@@ -123,7 +123,7 @@ class Text_generator:
 			g[0]=g[0].upper()
 		final_sentence = "".join(g)
 
-		generated_sentence = final_sentence+ "." + "\nSumber data : OpenWeather"#menambah titik
+		generated_sentence = final_sentence+ "." + "\n\nSumber data : OpenWeather"#menambah titik
 		print("-----PROSES PEMBANGKITAN KALIMAT BERHASIL-----"+"\n\n")
 		return generated_sentence
 		# return sample_array
