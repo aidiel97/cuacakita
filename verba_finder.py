@@ -71,6 +71,7 @@ class Verba_finder:
 		factory = StemmerFactory()
 		stemmer = factory.create_stemmer()
 
+		#hasan (1998) hal : 353
 		meng = ['a','e','i','o','u','k','g','h','x']
 		me = ['m','n','r','y','w','l']
 		men = ['d','t']
