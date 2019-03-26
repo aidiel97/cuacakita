@@ -65,6 +65,8 @@ def reply():
 				sn s.user.screen_name
 				m = "@%s Hello!" % (sn)
 				s = tweepyapi.update_status(m, s.id)
+				print("tweet berhasil dibalas")
+	return "terbalaskan"
 
 @app.route("/get_data", methods=["GET"])
 def get_data():
