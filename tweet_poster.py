@@ -20,4 +20,3 @@ class tweet_poster:
 
 		tweepyapi.update_status(sentence)
 		print("tweet berhasil di post :", sentence)
-

@@ -4,7 +4,6 @@ from werkzeug.utils import secure_filename
 import tweepy
 import time,json,re,os, sys
 from text_generator import Text_generator
-from keys import keys
 from tweet_poster import tweet_poster
 
 UPLOAD_FOLDER = 'input/tempData/'
