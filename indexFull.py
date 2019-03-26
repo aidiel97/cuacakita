@@ -62,7 +62,7 @@ def reply():
 	for s in twt:
 		for i in t:
 			if i == s.text:
-				sn s.user.screen_name
+				sn = s.user.screen_name
 				m = "@%s Hello!" % (sn)
 				s = tweepyapi.update_status(m, s.id)
 				print("tweet berhasil dibalas")
