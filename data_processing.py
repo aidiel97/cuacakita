@@ -88,9 +88,19 @@ class Data_processing:
 				k = 0
 
 		if(max!=0):
-			choosen = array_data[k] 
+			choosen = array_data[k]
 		else:
 			choosen = random.choice(array_data)
+
+		# choosen = []
+		# if(max!=0):
+		# 	for data in range(len(array_data)):
+		# 		choosen.append(array_data[k])
+		# else:
+		# 	choosen.append(random.choice(array_data))
+
+		# for data in range(len(array_data)):
+		# 		choosen.append(array_data[k])
 	
 		# get sunrise&sunset time
 		# sunrise, sunset = request.get_syssun(request.get_sys(choosen['kota']))
@@ -101,6 +111,8 @@ class Data_processing:
 		# cuaca_sebelum = ""
 		print(choosen)
 		data_process = []
+		# dp = []
+		# for data in range(len(choosen)):
 		for x in range(len(array_data)):
 			if(array_data[x]['kota'] == choosen['kota']):
 				jam = int(array_data[x]['jam'])
@@ -150,6 +162,8 @@ class Data_processing:
 					'kelembapan':array_data[x]['kelembapan'],
 					'k_kelembapan':k_kelembapan
 				})
+			# dp.append(data_process)
+			# dp = data_process
 
 		del array_data[:]
 		print("-----PEMROSESAN DATA SUKSES-----")
@@ -166,9 +180,9 @@ class Data_processing:
 		thp7 = thp6.replace("x_kelembapan",kelembapan)
 		return thp7
 
-# a = Data_processing()
+a = Data_processing()
 # print(a.getArray())
-# a.dataProcessing(a.getArray())
+a.dataProcessing(a.getArray())
 # print(x)
 # today = datetime.datetime.now() 
 # print(today)
