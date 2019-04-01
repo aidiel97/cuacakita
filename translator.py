@@ -1,3 +1,5 @@
+import re
+
 class Translate:
 	def translate(self,idt):
 		dictionary = {
@@ -63,8 +65,9 @@ class Translate:
 		call = file.read()
 		corps = call.split()
 		file.close()
-		
-		withouthduplicate = list(dict.fromkeys(corps))
+
+	#pembuatan corpus		
+		# withouthduplicate = list(dict.fromkeys(corps))
 		# print(withouthduplicate)
 
 		# print(call.replace(" ",""))
@@ -74,18 +77,34 @@ class Translate:
 		# x = call.replace("("," ")
 		# y = x.replace(")","")
 
-		xfile = open("daerah.txt", "w")
+		# xfile = open("daerah.txt", "w")
 
-		for x in range(len(withouthduplicate)):
-			xfile.write(withouthduplicate[x] + " ")
+		# for x in range(len(withouthduplicate)):
+		# 	xfile.write(withouthduplicate[x] + " ")
 
-		xfile.close()
+		# xfile.close()
+
 
 		# # print(daerah)
-		# if x in daerah:
-		# 	print("ada")
-		# else:
-		# 	print("ga ada")
+
+		# ayam = "ayam bakar #enak #gokil"
+		# j = re.findall(r"#(\w+)", ayam)
+		# print(j)
+		if len(x) != 0:
+			# print(x)
+			y = x[0].replace("#","")
+
+			if y in corps:
+				last = re.sub(r"(\w)([A-Z])", r"\1 \2", y)
+				# print(last)
+				return last
+
+			else:
+				return "no"
+
+		else:
+			# print("no")
+			return "no"
 
 	def kamusCuaca(self, x):
 		
@@ -136,5 +155,5 @@ class Translate:
 # 		print(array)
 
 translate = Translate()
-translate.kamusDaerah("kedewatan")
+translate.kamusDaerah("#SumateraUtara")
 # translate.addWeather()

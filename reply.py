@@ -1,5 +1,7 @@
 import tweepy
 import time
+import re
+from translator import Translate
 
 print('Reply BOT!', flush=True)
 
@@ -35,7 +37,7 @@ def store_last_seen_id(last_seen_id, file_name): #setelah dibaca tweet mention y
 
 def reply_to_tweets():
     print('retrieving and replying to tweets...', flush=True)
-    # id last seen testing : 1110469971778240512
+    # id last seen testing : 1112619279025725441
     last_seen_id = retrieve_last_seen_id(FILE_NAME)
     mentions = api.mentions_timeline(
                         last_seen_id,
@@ -45,10 +47,20 @@ def reply_to_tweets():
         print(str(mention.id) + ' - ' + mention.full_text, flush=True)
         last_seen_id = mention.id
         store_last_seen_id(last_seen_id, FILE_NAME)
-        if '#hai' in mention.full_text.lower():
+
+        tweet = mention.full_text
+        city = re.findall(r"#(\w+)", tweet)
+
+        translate = Translate()
+        ans = translate.kamusDaerah(city)
+        print(ans)
+
+        # if '#hai' in mention.full_text.lower():
+        if ans != "no":
             print('menemukan #hai!', flush=True)
             print('respond tweet...', flush=True)
-            api.update_status('#Hai! juga @' + mention.user.screen_name, mention.id)
+            api.update_status('Hai! @' + mention.user.screen_name + 
+            	" " + ans + " itu nama daerah di Indonesia kan? ramalan cuacanya menyusul ya :)", mention.id)
 
 while True:
     reply_to_tweets()
