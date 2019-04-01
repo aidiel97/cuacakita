@@ -58,6 +58,35 @@ class Translate:
 		}
 		return dictionary[idt] if idt in dictionary else "-"
 
+	def kamusDaerah(self, x):
+		file = open("daerah.txt", "r")
+		call = file.read()
+		corps = call.split()
+		file.close()
+		
+		withouthduplicate = list(dict.fromkeys(corps))
+		# print(withouthduplicate)
+
+		# print(call.replace(" ",""))
+		# v = call.replace("\n"," ") #ubah newline jadi spasi
+		# w = call.replace(" ","") #hapus spasi
+		#hapus kurung
+		# x = call.replace("("," ")
+		# y = x.replace(")","")
+
+		xfile = open("daerah.txt", "w")
+
+		for x in range(len(withouthduplicate)):
+			xfile.write(withouthduplicate[x] + " ")
+
+		xfile.close()
+
+		# # print(daerah)
+		# if x in daerah:
+		# 	print("ada")
+		# else:
+		# 	print("ga ada")
+
 	def kamusCuaca(self, x):
 		
 		cuaca = ['gerimis', 'hujan', 'salju', 'kabut', 'embun', 'pasir', 'debu', 'berawan', 'mendung', 'cerah', 'badai', 'topan', 'ringan', 'berat', 'lokal', 'besar', 'deras', 'es', 'lebat', 'asap', 'tipis', 'abu', 'vulkanik', 'langit', 'sedikit', 'petir', 'hebat', 'saat', 'terang', 'sangat', 'sebagian', 'awan', 'tebal', 'kencang']
@@ -106,5 +135,6 @@ class Translate:
 
 # 		print(array)
 
-# translate = Translate()
+translate = Translate()
+translate.kamusDaerah("kedewatan")
 # translate.addWeather()
