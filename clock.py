@@ -58,11 +58,15 @@ def reply_to_tweets():
 
         # if '#hai' in mention.full_text.lower():
         if ans != "no":
-            print('menemukan #hai!', flush=True)
-            print('respond tweet...', flush=True)
-            api.update_status('Hai! @' + mention.user.screen_name + 
-            	" " + ans + " itu nama daerah di Indonesia kan? ramalan cuacanya menyusul ya :)", mention.id)
+        	text_gen = Text_generator()
+        	data = text_gen.getCData(ans)
+        	sentence = text_gen.generator(data)
 
+        	print('menemukan tweet yang harus dibalas!', flush=True)
+        	print('respond tweet...', flush=True)
+
+        	api.update_status('Hai! @' + mention.user.screen_name + 
+            	" " + sentence, mention.id)
 
 sched = BlockingScheduler()
 
