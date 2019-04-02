@@ -90,14 +90,17 @@ class Translate:
 		# ayam = "ayam bakar #enak #gokil"
 		# j = re.findall(r"#(\w+)", ayam)
 		# print(j)
+
 		if len(x) != 0:
 			# print(x)
 			y = x[0].replace("#","")
 
-			if y in corps:
-				last = re.sub(r"(\w)([A-Z])", r"\1 \2", y)
-				# print(last)
-				return last
+			for lines in corps:
+				if y == lines.lower():
+			# if y in corps:
+					last = re.sub(r"(\w)([A-Z])", r"\1 \2", y)
+					# print(last)
+					return last
 
 			else:
 				return "no"

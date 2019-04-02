@@ -52,7 +52,9 @@ def reply_to_tweets():
         store_last_seen_id(last_seen_id, FILE_NAME)
 
         tweet = mention.full_text
-        city = re.findall(r"#(\w+)", tweet)
+        tlow = tweet.lower()
+        # print(tlow)
+        city = re.findall(r"#(\w+)", tlow)
 
         translate = Translate()
         ans = translate.kamusDaerah(city)
