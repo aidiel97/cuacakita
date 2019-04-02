@@ -3,6 +3,7 @@ import tweepy
 import time
 import re
 from translator import Translate
+from text_generator import Text_generator
 
 print('Reply BOT!', flush=True)
 
