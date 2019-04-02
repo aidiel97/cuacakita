@@ -72,7 +72,7 @@ def reply_to_tweets():
 
 sched = BlockingScheduler()
 
-@sched.scheduled_job('interval', minutes=0.25)
+@sched.scheduled_job('interval', minutes=25)
 def timed_job():
     print('This job is run every 0.25 minutes.')
     reply_to_tweets()
