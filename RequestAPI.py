@@ -125,3 +125,7 @@ class RequestAPI:
 				'urgensi':urgensi
 			})
 		return array
+
+# a = RequestAPI()
+# x = a.get_by_city("Bangka Belitung")
+# print(x)
