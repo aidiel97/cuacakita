@@ -21,6 +21,13 @@ class Text_generator:
 
 		return forecast_data
 
+	def getCData(self, city):
+		data = Data_processing()
+
+		forecast_data = data.dataProcessing(data.getCityData(city))
+
+		return forecast_data
+
 	def generator(self, sample_array):
 		this = Text_generator()
 		verba = Verba_finder()
@@ -51,21 +58,21 @@ class Text_generator:
 			beda = "tidak teridentifikasi"
 			jam = str(tmdelta)[:1]
 			menit = str(tmdelta)[2:].split(tdua, 2)[0]
-			# if (jam == "0"): 
-			# 	if(menit[:1] == "0"):
-			# 		beda = menit[1:] + " menit"
-			# 	else:
-			# 		beda = menit + " menit"
-			# elif(jam == "0" and menit =="00"):
-			# 	beda = str(tmdelta)[5:] + " detik"
-			# else:
-			# 	if(menit == "00" or menit == ""):
-			# 		beda = jam + " jam"
-			# 	else:
-			# 		beda = jam + " jam " + menit + " menit"
+			if (jam == "0"): 
+				if(menit[:1] == "0"):
+					beda = menit[1:] + " menit"
+				else:
+					beda = menit + " menit"
+			elif(jam == "0" and menit =="00"):
+				beda = str(tmdelta)[5:] + " detik"
+			else:
+				if(menit == "00" or menit == ""):
+					beda = jam + " jam"
+				else:
+					beda = jam + " jam " + menit + " menit"
 
-			# waktu = str(beda) + " kedepan"
-			waktu = str(jam) + " jam kedepan"
+			waktu = str(beda) + " kedepan"
+			# waktu = str(jam) + " jam kedepan"
 
 		c_hujan = sample_array[0]['k_hujan']
 
@@ -179,9 +186,9 @@ class Text_generator:
 		
 		return keterangan_temp, keterangan
 
-a = Text_generator()
-x = a.getData()
-print(a.generator(x))
+# a = Text_generator()
+# x = a.getCData("Medan")
+# print(a.generator(x))
 # time = str(x[0]['jam']) + ':00:00'
 # now = str(datetime.now().time()).split('.', 1)[0]
 # FMT = '%H:%M:%S'
