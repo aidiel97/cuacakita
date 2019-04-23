@@ -82,6 +82,25 @@ def get_data():
 	sentence = text.generator(data)
 	# print("dataaa jkahd")
 	post.post(sentence)
+
+	#memastikan mention ga dibalas dua kali
+	file_name = 'last_seen_id.txt'
+
+	f_read = open(file_name, 'r')
+	last_seen_id = int(f_read.read().strip())
+	f_read.close()
+
+	mentions = tweepyapi.mentions_timeline(last_seen_id, tweet_mode='extended')
+
+	if len(mentions) != 0 :
+		last_seen_id_w = mentions[0].id
+
+		f_write = open(file_name, 'w')
+		f_write.write(str(last_seen_id_w))
+		f_write.close()
+
+		print("last seen : ",last_seen_id_w)
+	
 	return jsonify({
 		'kota' :kota,
 		'sentence': sentence,
