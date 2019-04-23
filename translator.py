@@ -157,6 +157,6 @@ class Translate:
 
 # 		print(array)
 
-translate = Translate()
-translate.kamusDaerah("#SumateraUtara")
+# translate = Translate()
+# translate.kamusDaerah("#SumateraUtara")
 # translate.addWeather()

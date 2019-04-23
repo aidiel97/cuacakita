@@ -41,32 +41,6 @@ def post():
 	print("tweet berhasil di post :", sentence)
 	return "berhasil"
 
-@app.route("/reply")
-def reply():
-	consumer_key = "k2HFUcJA2CMcb2JwWnFYXmwGs"
-	consumer_secret = "ZnedSsVh8nAJrhkwMbyITCJsTCP4D4a8VO2zhr7Qj5kcya1UN1"
-
-	access_token = "1019130150405828610-tjzmuDjAFXBvwftL6ugevFtd1vPhys"
-	access_token_secret = "e7zUjaCimnYKQtlrRu75ynXupUQu4NkTrQmN3wBuM7YPO"
-
-	auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
-	auth.set_access_token(access_token, access_token_secret)
-
-	tweepyapi = tweepy.API(auth)
-
-	twts = api.search(q="Hello World!")
-
-	t = ['Hello world!', 'Hello World', 'Hello World!!!', 'Hello world!!!', 'Hello, World!']
-
-	for s in twt:
-		for i in t:
-			if i == s.text:
-				sn = s.user.screen_name
-				m = "@%s Hello!" % (sn)
-				s = tweepyapi.update_status(m, s.id)
-				print("tweet berhasil dibalas")
-	return "terbalaskan"
-
 @app.route("/get_data", methods=["GET"])
 def get_data():
 

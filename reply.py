@@ -64,14 +64,14 @@ def reply_to_tweets():
         if ans != "no":
         	print('menemukan tweet yang harus dibalas!', flush=True)
         	
-        	text_gen = Text_generator()
-        	data = text_gen.getCData(ans)
-        	sentence = text_gen.generator(data)
+        	# text_gen = Text_generator()
+        	# data = text_gen.getCData(ans)
+        	# sentence = text_gen.generator(data)
 
-        	print('respond tweet...', flush=True)
+        	# print('respond tweet...', flush=True)
 
-        	api.update_status('Hai! @' + mention.user.screen_name + 
-            	" " + sentence, mention.id)
+        	# api.update_status('Hai! @' + mention.user.screen_name + 
+         #    	" " + sentence, mention.id)
 
 while True:
     reply_to_tweets()
