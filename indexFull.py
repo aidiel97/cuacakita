@@ -37,6 +37,21 @@ def post():
 	data = text_gen.getData()
 	sentence = text_gen.generator(data)
 	
+	#memastikan mention ga dibalas dua kali
+	FILE_NAME = 'last_seen_id.txt'
+
+	f_read = open(file_name, 'r')
+	last_seen_id = int(f_read.read().strip())
+    f_read.close()
+
+    mentions = tweepyapi.mentions_timeline(last_seen_id, tweet_mode='extended')
+
+    last_seen_id_w = mentions[0].id
+
+    f_write = open(file_name, 'w')
+    f_write.write(str(last_seen_id_w))
+    f_write.close()
+
 	tweepyapi.update_status(sentence)
 	print("tweet berhasil di post :", sentence)
 	return "berhasil"
