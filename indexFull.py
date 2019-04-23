@@ -49,13 +49,14 @@ def post():
 
 	mentions = tweepyapi.mentions_timeline(last_seen_id, tweet_mode='extended')
 
-	last_seen_id_w = mentions[0].id
+	if len(mentions) != 0 :
+		last_seen_id_w = mentions[0].id
 
-	f_write = open(file_name, 'w')
-	f_write.write(str(last_seen_id_w))
-	f_write.close()
+		f_write = open(file_name, 'w')
+		f_write.write(str(last_seen_id_w))
+		f_write.close()
 
-	print("last seen : ",last_seen_id_w)
+		print("last seen : ",last_seen_id_w)
 
 	return "berhasil"
 
