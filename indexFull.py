@@ -38,7 +38,7 @@ def post():
 	sentence = text_gen.generator(data)
 	
 	#memastikan mention ga dibalas dua kali
-	FILE_NAME = 'last_seen_id.txt'
+	file_name = 'last_seen_id.txt'
 
 	f_read = open(file_name, 'r')
 	last_seen_id = int(f_read.read().strip())
