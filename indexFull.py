@@ -36,6 +36,9 @@ def post():
 	text_gen = Text_generator()
 	data = text_gen.getData()
 	sentence = text_gen.generator(data)
+
+	tweepyapi.update_status(sentence)
+	print("tweet berhasil di post :", sentence)
 	
 	#memastikan mention ga dibalas dua kali
 	file_name = 'last_seen_id.txt'
@@ -52,8 +55,8 @@ def post():
 	f_write.write(str(last_seen_id_w))
 	f_write.close()
 
-	tweepyapi.update_status(sentence)
-	print("tweet berhasil di post :", sentence)
+	print("last seen : ",last_seen_id_w)
+
 	return "berhasil"
 
 @app.route("/get_data", methods=["GET"])
