@@ -48,7 +48,7 @@ def main():
 		print("last seen : ",last_seen_id_w)
 
 
-    return render_template('index.html')
+	return render_template('index.html')
 
 @app.route("/post")
 def post():
