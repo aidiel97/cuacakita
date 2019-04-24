@@ -71,6 +71,11 @@ def reply_to_tweets():
         	api.update_status('Hai! @' + mention.user.screen_name + 
             	" " + sentence, mention.id)
 
+        else :
+			api.update_status('Hai! @' + mention.user.screen_name + 
+            	"sayang sekali " + city + 
+            	" bukanlah salah satu nama daerah di Indonesia :(\nCuki hanya dibuat untuk kamu yang ingin tau prakiraan cuaca di Indonesia saja\n\nAyo coba yang lain", mention.id)
+
 def post():
 	print("POSTING JOB")
 	tweepyapi = tweepy.API(auth)
