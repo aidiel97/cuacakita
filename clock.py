@@ -73,7 +73,7 @@ def reply_to_tweets():
 
         else :
         	api.update_status('Hai! @' + mention.user.screen_name + 
-				"sayang sekali Cuki hanya dibuat untuk kamu yang ingin tau prakiraan cuaca di Indonesia saja\n\nAyo coba yang lain", mention.id)
+				" sayang sekali Cuki hanya dibuat untuk kamu yang ingin tau prakiraan cuaca di Indonesia saja\n\nAyo coba yang lain", mention.id)
 
 def post():
 	print("POSTING JOB")
