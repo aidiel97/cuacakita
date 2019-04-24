@@ -100,6 +100,10 @@ def post():
 
 		print("last seen : ",last_seen_id_w)
 
+def post_job():
+    print('post every 3 hour.')
+    post()
+
 sched = BlockingScheduler()
 
 @sched.scheduled_job('interval', minutes=0.25)
@@ -107,9 +111,6 @@ def timed_job():
     print('This job is run every 0.25 minutes.')
     reply_to_tweets()
 
-@sched.add_cron_job(job_function, hour='0,3,6,9,12,15,18,21')
-def post_job():
-    print('post every 3 hour.')
-    post()
+sched.add_job(post_job, 'cron', hour='0,3,6,9,12,15,18,21')
 
 sched.start()
