@@ -107,9 +107,9 @@ def timed_job():
     print('This job is run every 0.25 minutes.')
     reply_to_tweets()
 
-@sched.scheduled_job('interval', hours=1)
+@sched.add_cron_job(job_function, hour='0,3,6,9,12,15,18,21')
 def post_job():
-    print('post every 1 hour.')
+    print('post every 3 hour.')
     post()
 
 sched.start()
