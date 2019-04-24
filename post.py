@@ -50,7 +50,7 @@ def post():
 #for heroku
 sched = BlockingScheduler()
 
-@sched.scheduled_job('interval', minutes=0.5)
+@sched.scheduled_job('interval', minutes=1)
 def timed_job():
     print('post every 1 minutes.')
     reply_to_tweets()
