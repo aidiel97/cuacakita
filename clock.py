@@ -72,15 +72,7 @@ def reply_to_tweets():
             	" " + sentence, mention.id)
 
 def post():
-	consumer_key = "k2HFUcJA2CMcb2JwWnFYXmwGs"
-	consumer_secret = "ZnedSsVh8nAJrhkwMbyITCJsTCP4D4a8VO2zhr7Qj5kcya1UN1"
-
-	access_token = "1019130150405828610-tjzmuDjAFXBvwftL6ugevFtd1vPhys"
-	access_token_secret = "e7zUjaCimnYKQtlrRu75ynXupUQu4NkTrQmN3wBuM7YPO"
-
-	auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
-	auth.set_access_token(access_token, access_token_secret)
-
+	print("POSTING JOB")
 	tweepyapi = tweepy.API(auth)
 
 	text_gen = Text_generator()
@@ -115,12 +107,9 @@ def timed_job():
     print('This job is run every 0.25 minutes.')
     reply_to_tweets()
 
-sched2 = BlockingScheduler()
-
-@sched2.scheduled_job('interval', minutes=1)
-def timed_job():
-    print('post every 1 minutes.')
+@sched.scheduled_job('interval', minutes=60)
+def post_job():
+    print('post every 1 hour.')
     post()
 
 sched.start()
-sched2.start()
