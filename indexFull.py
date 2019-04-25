@@ -120,7 +120,9 @@ def wakeup():
 		f_write.close()
 
 		print("last seen : ",last_seen_id_w)
-		
+
+	print("PLEASE DON'T SLEEP!")
+
 	return "hai, dipanggil biar ga sleep aja heroku nya"
 	
 
