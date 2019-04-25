@@ -52,6 +52,10 @@ def main():
 
 @app.route("/post")
 def post():
+	return "hai, dipanggil biar ga sleep aja heroku nya"
+
+@app.route("/wakeup")
+def wakeup():
 	consumer_key = "k2HFUcJA2CMcb2JwWnFYXmwGs"
 	consumer_secret = "ZnedSsVh8nAJrhkwMbyITCJsTCP4D4a8VO2zhr7Qj5kcya1UN1"
 
