@@ -113,7 +113,7 @@ class Data_processing:
 
 		# suhu_sebelum = 0
 		# cuaca_sebelum = ""
-		print(choosen)
+		# print(choosen)
 		data_process = []
 		# dp = []
 		# for data in range(len(choosen)):
