@@ -171,7 +171,7 @@ class Data_processing:
 
 		del array_data[:]
 		print("-----PEMROSESAN DATA SUKSES-----")
-		print(data_process)
+		# print(data_process)
 		return data_process
 
 	def kalimatTemplate(self,kota,waktu,cuaca,suhu,angin,aangin,kelembapan,sentence):
