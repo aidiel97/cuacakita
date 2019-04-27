@@ -87,13 +87,13 @@ def post():
 	print("tweet berhasil di post :", sentence)
 	
 	#memastikan mention ga dibalas dua kali
-	file_name = 'last_seen_id.txt'
+	FILE_NAME = 'last_seen_id.txt'
 
 	last_seen_id = retrieve_last_seen_id(FILE_NAME)
     mentions = api.mentions_timeline(
                         last_seen_id,
                         tweet_mode='extended')
-    
+
     for mention in reversed(mentions): #supaya membaca perulangannya terbalik..
     #biasanya list mention di timline dibaca dari yg terakhir dahulu, supaya terurut, maka dibalik
         print(str(mention.id) + ' - ' + mention.full_text, flush=True)
