@@ -89,20 +89,20 @@ def post():
 	#memastikan mention ga dibalas dua kali
 	file_name = 'last_seen_id.txt'
 
-	f_read = open(file_name, 'r')
-	last_seen_id = int(f_read.read().strip())
-	f_read.close()
+	last_seen_id = retrieve_last_seen_id(FILE_NAME)
+    mentions = api.mentions_timeline(
+                        last_seen_id,
+                        tweet_mode='extended')
+    
+    for mention in reversed(mentions): #supaya membaca perulangannya terbalik..
+    #biasanya list mention di timline dibaca dari yg terakhir dahulu, supaya terurut, maka dibalik
+        print(str(mention.id) + ' - ' + mention.full_text, flush=True)
+        last_seen_id = mention.id
+        store_last_seen_id(last_seen_id, FILE_NAME)
 
-	mentions = tweepyapi.mentions_timeline(last_seen_id, tweet_mode='extended')
+        if ans != "no":
+        	print('menemukan tweet yang harus dibalas!', flush=True)
 
-	if len(mentions) != 0 :
-		last_seen_id_w = mentions[0].id
-
-		f_write = open(file_name, 'w')
-		f_write.write(str(last_seen_id_w))
-		f_write.close()
-
-		print("last seen : ",last_seen_id_w)
 
 sched = BlockingScheduler()
 
