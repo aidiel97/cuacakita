@@ -103,10 +103,10 @@ def post():
 
 sched = BlockingScheduler()
 
-@sched.scheduled_job('interval', minutes=0.5)
-def timed_job():
-    print('This job is run every 30 second.')
-    reply_to_tweets()
+# @sched.scheduled_job('interval', minutes=0.5)
+# def timed_job():
+#     print('This job is run every 30 second.')
+#     reply_to_tweets()
 
 # @sched.scheduled_job('interval', minutes=60)
 # def post_job():
@@ -118,3 +118,5 @@ def timed_job():
 sched.start()
 
 #IP SERVER NOOR 188.166.216.148
+# cara nya ssh 188.166.216.148 -p 20150
+# terus crontab -e
