@@ -70,52 +70,51 @@ def reply_to_tweets():
 
         	api.update_status('Hai! @' + mention.user.screen_name + 
             	" " + sentence, mention.id)
-
-        else :
-        	api.update_status('Hai! @' + mention.user.screen_name + 
-				" sayang sekali Cuki hanya dibuat untuk kamu yang ingin tau prakiraan cuaca di Indonesia saja\n\nAyo coba yang lain", mention.id)
+        elif city != []:
+        	api.update_status('Hai! @' + mention.user.screen_name +
+        		" sayang sekali Cuki hanya dibuat untuk kamu yang ingin tau prakiraan cuaca di Indonesia saja\n\nAyo coba yang lain", mention.id)
 
 def post():
 	print("POSTING JOB")
-	tweepyapi = tweepy.API(auth)
+
+	#memastikan mention ga dibalas dua kali
+	FILE_NAME = 'last_seen_id.txt'
+
+	last_seen_id = retrieve_last_seen_id(FILE_NAME)
+	mentions = api.mentions_timeline(last_seen_id,tweet_mode='extended')
+
+	for mention in reversed(mentions): #supaya membaca perulangannya terbalik..
+    #biasanya list mention di timline dibaca dari yg terakhir dahulu, supaya terurut, maka dibalik
+		print(str(mention.id) + ' - ' + mention.full_text, flush=True)
+		last_seen_id = mention.id
+		store_last_seen_id(last_seen_id, FILE_NAME)
+
+		if ans != "no":
+			print('menemukan tweet yang harus dibalas!', flush=True)
 
 	text_gen = Text_generator()
 	data = text_gen.getData()
 	sentence = text_gen.generator(data)
 
-	tweepyapi.update_status(sentence)
+	api.update_status(sentence)
 	print("tweet berhasil di post :", sentence)
 	
-	#memastikan mention ga dibalas dua kali
-	FILE_NAME = 'last_seen_id.txt'
-
-	last_seen_id = retrieve_last_seen_id(FILE_NAME)
-    mentions = api.mentions_timeline(
-                        last_seen_id,
-                        tweet_mode='extended')
-
-    for mention in reversed(mentions): #supaya membaca perulangannya terbalik..
-    #biasanya list mention di timline dibaca dari yg terakhir dahulu, supaya terurut, maka dibalik
-        print(str(mention.id) + ' - ' + mention.full_text, flush=True)
-        last_seen_id = mention.id
-        store_last_seen_id(last_seen_id, FILE_NAME)
-
-        if ans != "no":
-        	print('menemukan tweet yang harus dibalas!', flush=True)
 
 
 sched = BlockingScheduler()
 
-@sched.scheduled_job('interval', minutes=1)
+@sched.scheduled_job('interval', minutes=0.5)
 def timed_job():
-    print('This job is run every 1 minutes.')
+    print('This job is run every 30 second.')
     reply_to_tweets()
 
-@sched.scheduled_job('interval', hours=1)
-def post_job():
-    print('post every hour.')
-    post()
+# @sched.scheduled_job('interval', minutes=60)
+# def post_job():
+#     print('post every hour.')
+#     post()
 
 # sched.add_job(post_job, 'cron', hour='0-23')
 
 sched.start()
+
+#IP SERVER NOOR 188.166.216.148
