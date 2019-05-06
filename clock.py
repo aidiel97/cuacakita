@@ -41,9 +41,7 @@ def reply_to_tweets():
     print('retrieving and replying to tweets...', flush=True)
     # id last seen testing : 1112619279025725441
     last_seen_id = retrieve_last_seen_id(FILE_NAME)
-    mentions = api.mentions_timeline(
-                        last_seen_id,
-                        tweet_mode='extended')
+    mentions = api.mentions_timeline(last_seen_id,tweet_mode='extended')
     for mention in reversed(mentions): #supaya membaca perulangannya terbalik..
     #biasanya list mention di timline dibaca dari yg terakhir dahulu, supaya terurut, maka dibalik
         print(str(mention.id) + ' - ' + mention.full_text, flush=True)
@@ -103,12 +101,12 @@ def post():
 
 sched = BlockingScheduler()
 
-# @sched.scheduled_job('interval', minutes=0.5)
-# def timed_job():
-#     print('This job is run every 30 second.')
-#     reply_to_tweets()
+@sched.scheduled_job('interval', minutes=0.25)
+def timed_job():
+    print('This job is run every 15 second.')
+    reply_to_tweets()
 
-# @sched.scheduled_job('interval', minutes=60)
+# @sched.scheduled_job('interval', hours=1)
 # def post_job():
 #     print('post every hour.')
 #     post()
