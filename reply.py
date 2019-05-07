@@ -1,5 +1,5 @@
 #testing Code
-
+import requests
 import tweepy
 import time
 import re
@@ -32,16 +32,17 @@ def retrieve_last_seen_id(file_name): #melihat idtweet terakhir yang distore, me
     f_read.close()
     return last_seen_id
 
-def store_last_seen_id(last_seen_id, file_name): #setelah dibaca tweet mention yg terakhir, maka idtweet akan dicatat di file 'last_seen_id.txt'
-    f_write = open(file_name, 'w')
-    f_write.write(str(last_seen_id))
-    f_write.close()
-    return
+def store_last_seen_id(last_seen_id): #setelah dibaca tweet mention yg terakhir, maka idtweet akan dicatat di file 'last_seen_id.txt'
+   requests.request("GET", "http://188.166.216.148:4545/post/"+ last_seen_id)
+   return "berhasil"
 
 def reply_to_tweets():
     print('retrieving and replying to tweets...', flush=True)
     # id last seen testing : 1112619279025725441 1124521036538568704
-    last_seen_id = retrieve_last_seen_id(FILE_NAME)
+    url = "http://188.166.216.148:4545/"
+    response = requests.request("GET", url)
+
+    last_seen_id = response.text
     mentions = api.mentions_timeline(
                         last_seen_id,
                         tweet_mode='extended')
@@ -52,7 +53,7 @@ def reply_to_tweets():
     #biasanya list mention di timline dibaca dari yg terakhir dahulu, supaya terurut, maka dibalik
         print(str(mention.id) + ' - ' + mention.full_text + ' - ' +str(mention.in_reply_to_screen_name), flush=True)
         last_seen_id = str(mention.id)
-        store_last_seen_id(last_seen_id, FILE_NAME)
+        store_last_seen_id(last_seen_id)
 
         tweet = mention.full_text
         tlow = tweet.lower()
@@ -78,4 +79,4 @@ def reply_to_tweets():
 
 while True:
     reply_to_tweets()
-    time.sleep(3600)
+    time.sleep(15)
