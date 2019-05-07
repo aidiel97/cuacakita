@@ -59,7 +59,7 @@ def reply_to_tweets():
         print(ans)
 
         # if '#hai' in mention.full_text.lower():
-        if ans != "no" and mention.in_reply_to_screen_name != 'cuaca_kita':
+        if ans != "no":
         	print('menemukan tweet yang harus dibalas!', flush=True)
         	
         	text_gen = Text_generator()
@@ -70,7 +70,7 @@ def reply_to_tweets():
 
         	api.update_status('Hai! @' + mention.user.screen_name + 
             	" " + sentence, mention.id)
-        elif city != [] and mention.in_reply_to_screen_name != 'cuaca_kita':
+        elif city != []:
         	api.update_status('Hai! @' + mention.user.screen_name +
         		" sayang sekali Cuki hanya dibuat untuk kamu yang ingin tau prakiraan cuaca di Indonesia saja\n\nAyo coba yang lain", mention.id)
 
