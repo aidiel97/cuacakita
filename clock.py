@@ -43,7 +43,7 @@ def reply_to_tweets():
     last_seen_id = retrieve_last_seen_id(FILE_NAME)
     mentions = api.mentions_timeline(last_seen_id,tweet_mode='extended')
     print('last seen id : ', last_seen_id)
-    
+
     for mention in reversed(mentions): #supaya membaca perulangannya terbalik..
     #biasanya list mention di timline dibaca dari yg terakhir dahulu, supaya terurut, maka dibalik
         print(str(mention.id) + ' - ' + mention.full_text, flush=True)
@@ -59,7 +59,7 @@ def reply_to_tweets():
         print(ans)
 
         # if '#hai' in mention.full_text.lower():
-        if ans != "no":
+        if ans != "no" and mention.in_reply_to_screen_name != 'cuaca_kita':
         	print('menemukan tweet yang harus dibalas!', flush=True)
         	
         	text_gen = Text_generator()
@@ -70,7 +70,7 @@ def reply_to_tweets():
 
         	api.update_status('Hai! @' + mention.user.screen_name + 
             	" " + sentence, mention.id)
-        elif city != []:
+        elif city != [] and mention.in_reply_to_screen_name != 'cuaca_kita':
         	api.update_status('Hai! @' + mention.user.screen_name +
         		" sayang sekali Cuki hanya dibuat untuk kamu yang ingin tau prakiraan cuaca di Indonesia saja\n\nAyo coba yang lain", mention.id)
 

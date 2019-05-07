@@ -46,24 +46,26 @@ def reply_to_tweets():
                         last_seen_id,
                         tweet_mode='extended')
     print('last seen id : ', last_seen_id)
-    for mention in reversed(mentions): #supaya membaca perulangannya terbalik..
-    #biasanya list mention di timline dibaca dari yg terakhir dahulu, supaya terurut, maka dibalik
-        print(str(mention.id) + ' - ' + mention.full_text, flush=True)
-        last_seen_id = str(mention.id)
-        store_last_seen_id(last_seen_id, FILE_NAME)
+    print(mentions)
 
-        tweet = mention.full_text
-        tlow = tweet.lower()
-        # print(tlow)
-        city = re.findall(r"#(\w+)", tlow)
+    # for mention in reversed(mentions): #supaya membaca perulangannya terbalik..
+    # #biasanya list mention di timline dibaca dari yg terakhir dahulu, supaya terurut, maka dibalik
+    #     print(str(mention.id) + ' - ' + mention.full_text + ' - ' +str(mention.in_reply_to_screen_name), flush=True)
+    #     last_seen_id = str(mention.id)
+    #     store_last_seen_id(last_seen_id, FILE_NAME)
 
-        translate = Translate()
-        ans = translate.kamusDaerah(city)
-        print(ans)
+    #     tweet = mention.full_text
+    #     tlow = tweet.lower()
+    #     # print(tlow)
+    #     city = re.findall(r"#(\w+)", tlow)
 
-        # if '#hai' in mention.full_text.lower():
-        if ans != "no":
-        	print('menemukan tweet yang harus dibalas!', flush=True)
+    #     translate = Translate()
+    #     ans = translate.kamusDaerah(city)
+    #     print(ans)
+
+    #     # if '#hai' in mention.full_text.lower():
+    #     if ans != "no" and mention.in_reply_to_screen_name != 'cuaca_kita':
+    #     	print('menemukan tweet yang harus dibalas!', flush=True)
         	
         	# text_gen = Text_generator()
         	# data = text_gen.getCData(ans)
@@ -76,4 +78,4 @@ def reply_to_tweets():
 
 while True:
     reply_to_tweets()
-    time.sleep(15)
+    time.sleep(3600)
