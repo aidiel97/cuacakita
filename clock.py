@@ -110,10 +110,10 @@ def timed_job():
     print('This job is run every 15 second.')
     reply_to_tweets()
 
-# @sched.scheduled_job('interval', hours=1)
-# def post_job():
-#     print('post every hour.')
-#     post()
+@sched.scheduled_job('interval', hours=1)
+def post_job():
+    print('post every hour.')
+    post()
 
 # sched.add_job(post_job, 'cron', hour='0-23')
 
