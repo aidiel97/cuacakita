@@ -125,7 +125,7 @@ class Data_processing:
 				# time = request.get_time(array_data[x]['tgl'], array_data[x]['kota'])
 				print("\n\n"+ "Memulai lexicalisasi data.....")
 				#data suhu udara
-				suhu = round(array_data[x]['suhu']-273.15)
+				suhu = array_data[x]['suhu']
 				# suhu = data['list'][a]['main']['temp']
 				k_suhu = check.check_suhu(suhu)
 				
@@ -184,10 +184,10 @@ class Data_processing:
 		thp7 = thp6.replace("x_kelembapan",kelembapan)
 		return thp7
 
-# a = Data_processing()
+a = Data_processing()
 # print(a.getArray())
 # a.dataProcessing(a.getArray())
-# a.dataProcessing(a.getCityData("Medan"))
-# print(x)
+x = a.dataProcessing(a.getCityData("Medan"))
+print(x)
 # today = datetime.datetime.now() 
 # print(today)
