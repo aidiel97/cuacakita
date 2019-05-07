@@ -77,7 +77,7 @@ def wakeup():
 	file_name = 'last_seen_id.txt'
 
 	f_read = open(file_name, 'r')
-	last_seen_id = int(f_read.read().strip())
+	last_seen_id = str(f_read.read().strip())
 	f_read.close()
 
 	mentions = tweepyapi.mentions_timeline(last_seen_id, tweet_mode='extended')

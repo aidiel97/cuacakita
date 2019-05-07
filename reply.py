@@ -28,7 +28,7 @@ FILE_NAME = 'last_seen_id.txt'
 
 def retrieve_last_seen_id(file_name): #melihat idtweet terakhir yang distore, mencegah, tweet dibalas duakali
     f_read = open(file_name, 'r')
-    last_seen_id = int(f_read.read().strip())
+    last_seen_id = str(f_read.read().strip())
     f_read.close()
     return last_seen_id
 
@@ -40,7 +40,7 @@ def store_last_seen_id(last_seen_id, file_name): #setelah dibaca tweet mention y
 
 def reply_to_tweets():
     print('retrieving and replying to tweets...', flush=True)
-    # id last seen testing : 1112619279025725441
+    # id last seen testing : 1112619279025725441 1124521036538568704
     last_seen_id = retrieve_last_seen_id(FILE_NAME)
     mentions = api.mentions_timeline(
                         last_seen_id,
@@ -48,7 +48,7 @@ def reply_to_tweets():
     for mention in reversed(mentions): #supaya membaca perulangannya terbalik..
     #biasanya list mention di timline dibaca dari yg terakhir dahulu, supaya terurut, maka dibalik
         print(str(mention.id) + ' - ' + mention.full_text, flush=True)
-        last_seen_id = mention.id
+        last_seen_id = str(mention.id)
         store_last_seen_id(last_seen_id, FILE_NAME)
 
         tweet = mention.full_text
