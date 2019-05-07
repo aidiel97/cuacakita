@@ -42,6 +42,8 @@ def reply_to_tweets():
     # id last seen testing : 1112619279025725441
     last_seen_id = retrieve_last_seen_id(FILE_NAME)
     mentions = api.mentions_timeline(last_seen_id,tweet_mode='extended')
+    print('last seen id : ', last_seen_id)
+    
     for mention in reversed(mentions): #supaya membaca perulangannya terbalik..
     #biasanya list mention di timline dibaca dari yg terakhir dahulu, supaya terurut, maka dibalik
         print(str(mention.id) + ' - ' + mention.full_text, flush=True)
