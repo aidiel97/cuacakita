@@ -60,8 +60,7 @@ def post():
 
 	return "berhasil"
 
-@app.route("/wakeup")
-def wakeup():
+def lastseen():
 	consumer_key = "k2HFUcJA2CMcb2JwWnFYXmwGs"
 	consumer_secret = "ZnedSsVh8nAJrhkwMbyITCJsTCP4D4a8VO2zhr7Qj5kcya1UN1"
 
@@ -91,6 +90,10 @@ def wakeup():
 
 		print("last seen : ",last_seen_id_w)
 
+@app.route("/wakeup")
+def wakeup():
+	
+	lastseen()
 	print("PLEASE DON'T SLEEP!")
 
 	return "hai, dipanggil biar ga sleep aja heroku nya"
@@ -132,8 +135,10 @@ def get_data():
 
 if __name__ == "__main__":
     # app.run(port=80,debug=True) #untuk local
+    lastseen()
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port = port)
+
 
 
 
