@@ -184,10 +184,10 @@ class Data_processing:
 		thp7 = thp6.replace("x_kelembapan",kelembapan)
 		return thp7
 
-a = Data_processing()
-# print(a.getArray())
-# a.dataProcessing(a.getArray())
-x = a.dataProcessing(a.getCityData("Medan"))
-print(x)
+# a = Data_processing()
+# # print(a.getArray())
+# # a.dataProcessing(a.getArray())
+# x = a.dataProcessing(a.getCityData("Medan"))
+# print(x)
 # today = datetime.datetime.now() 
 # print(today)
