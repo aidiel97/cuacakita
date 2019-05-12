@@ -109,6 +109,25 @@ class Translate:
 			# print("no")
 			return "no"
 
+	def quotes(self, x):
+		quotes = []
+		filepath = 'quotes.txt'  
+		with open(filepath, encoding="utf8") as fp:  
+		   line = fp.readline()
+		   cnt = 1
+		   while line:
+		   	# if "galau" in line :
+		   		# print("Line {}: {}".format(cnt, line.strip()))
+		   		quotes.append(format(line.strip()))
+		   		line = fp.readline()
+		   		cnt += 1
+		   		
+		for qt in quotes:
+			if x in qt:
+				return qt
+			else:
+				return "empty"
+
 	def kamusCuaca(self, x):
 		
 		cuaca = ['gerimis', 'hujan', 'salju', 'kabut', 'embun', 'pasir', 'debu', 'berawan', 'mendung', 'cerah', 'badai', 'topan', 'ringan', 'berat', 'lokal', 'besar', 'deras', 'es', 'lebat', 'asap', 'tipis', 'abu', 'vulkanik', 'langit', 'sedikit', 'petir', 'hebat', 'saat', 'terang', 'sangat', 'sebagian', 'awan', 'tebal', 'kencang']

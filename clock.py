@@ -76,6 +76,13 @@ def reply_to_tweets():
         	api.update_status('Hai! @' + mention.user.screen_name +
         		" sayang sekali Cuki hanya dibuat untuk kamu yang ingin tau prakiraan cuaca di Indonesia saja\n\nAyo coba yang lain", mention.id)
 
+        elif city == []:
+        	qt = translate.quotes(city)
+        	if qt != "empty":
+    			api.update_status('Hai! @' + mention.user.screen_name +"\n"+ qt, mention.id)
+    		else:
+    			api.update_status('Hai! @' + mention.user.screen_name +
+        		" sayang sekali Cuki tidak paham apa yang ingin kamu sampaikan", mention.id)
 def post():
 	print("POSTING JOB")
 
