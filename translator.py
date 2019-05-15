@@ -106,12 +106,13 @@ class Translate:
 					last = re.sub(r"(\w)([A-Z])", r"\1 \2", y)
 					# print(last)
 					return last
+			else:
+				z = x.replace("#","")
 
+				if z in qt_corps:
+					return "quotes"
 				else:
-					if x in qt_corps:
-						return "quotes"
-					else:
-						return "idk"
+					return "idk"
 
 		else:
 			# print("no")
@@ -184,6 +185,6 @@ class Translate:
 
 # 		print(array)
 
-# translate = Translate()
-# translate.kamusDaerah("#SumateraUtara")
+translate = Translate()
+translate.kamusDaerah("#medan")
 # translate.addWeather()
