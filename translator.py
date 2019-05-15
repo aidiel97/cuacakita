@@ -61,7 +61,12 @@ class Translate:
 		return dictionary[idt] if idt in dictionary else "-"
 
 	def kamusDaerah(self, x):
-		#pembuatan corpus		
+		file = open("daerah.txt", "r")
+		call = file.read()
+		corps = call.split()
+		file.close()
+
+	#pembuatan corpus		
 		# withouthduplicate = list(dict.fromkeys(corps))
 		# print(withouthduplicate)
 
@@ -86,16 +91,6 @@ class Translate:
 		# j = re.findall(r"#(\w+)", ayam)
 		# print(j)
 
-		file = open("daerah.txt", "r")
-		call = file.read()
-		corps = call.split()
-		file.close()
-
-		qt = open("quotes.txt", "r", encoding="utf8")
-		qt_call = qt.read()
-		qt_corps = qt_call.split()
-		qt.close()
-
 		if len(x) != 0:
 			# print(x)
 			y = x[0].replace("#","")
@@ -106,13 +101,9 @@ class Translate:
 					last = re.sub(r"(\w)([A-Z])", r"\1 \2", y)
 					# print(last)
 					return last
-			else:
-				z = x[0].replace("#","")
 
-				if z in qt_corps:
-					return "quotes"
-				else:
-					return "idk"
+			else:
+				return "no"
 
 		else:
 			# print("no")
@@ -185,6 +176,6 @@ class Translate:
 
 # 		print(array)
 
-translate = Translate()
-translate.kamusDaerah("#medan")
+# translate = Translate()
+# translate.kamusDaerah("#SumateraUtara")
 # translate.addWeather()

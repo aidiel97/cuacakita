@@ -72,12 +72,8 @@ def reply_to_tweets():
 
         	api.update_status('Hai! @' + mention.user.screen_name + 
             	" " + sentence, mention.id)
-        
-        elif ans == "quotes":
-        	qt = translate.quotes(city)
-        	api.update_status('Hai! @' + mention.user.screen_name + "\n"+ qt, mention.id)
-
-        elif city != [] or ans == "idk":
+        	
+        elif city != []:
         	api.update_status('Hai! @' + mention.user.screen_name +
         		" sayang sekali Cuki hanya dibuat untuk kamu yang ingin tau prakiraan cuaca di Indonesia saja\n\nAyo coba yang lain", mention.id)
 

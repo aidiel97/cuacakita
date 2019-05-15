@@ -23,3 +23,33 @@ if "galau" in qt_corps:
 	print("ya")
 else:
 	print("tidak")
+
+
+
+file = open("daerah.txt", "r")
+call = file.read()
+corps = call.split()
+file.close()
+
+qt = open("quotes.txt", "r", encoding="utf8")
+qt_call = qt.read()
+qt_corps = qt_call.split()
+qt.close()
+
+if len(x) != 0:
+	# print(x)
+	y = x[0].replace("#","")
+
+	for lines in corps:
+		if y == lines.lower():
+	# if y in corps:
+			last = re.sub(r"(\w)([A-Z])", r"\1 \2", y)
+			# print(last)
+			return last
+	else:
+		z = x[0].replace("#","")
+
+		if z in qt_corps:
+			return "quotes"
+		else:
+			return "idk"
