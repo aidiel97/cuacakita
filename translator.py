@@ -107,7 +107,7 @@ class Translate:
 					# print(last)
 					return last
 			else:
-				z = x.replace("#","")
+				z = x[0].replace("#","")
 
 				if z in qt_corps:
 					return "quotes"
