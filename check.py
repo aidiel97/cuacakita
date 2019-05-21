@@ -4,9 +4,9 @@ class Check:
 			k_suhu = "sangat dingin"
 		elif suhu>10 and suhu<=19:
 			k_suhu = "dingin"
-		elif suhu>19 and suhu<=26:
+		elif suhu>19 and suhu<=27:
 			k_suhu = "normal"
-		elif suhu>26 and suhu<=33:
+		elif suhu>27 and suhu<=33:
 			k_suhu = "panas"
 		else:
 			k_suhu = "sangat panas"

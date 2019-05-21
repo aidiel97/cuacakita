@@ -53,3 +53,7 @@ if len(x) != 0:
 			return "quotes"
 		else:
 			return "idk"
+
+elif ans == "quotes":
+        	qt = translate.quotes(city)
+        	api.update_status('Hai! @' + mention.user.screen_name + "\n"+ qt, mention.id)
