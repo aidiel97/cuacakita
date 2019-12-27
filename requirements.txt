@@ -19,7 +19,7 @@ itsdangerous==1.1.0
 Jinja2==2.10
 lxml==4.2.1
 MarkupSafe==1.1.0
-nltk==3.3
+nltk==3.4.5
 numpy==1.15.3
 oauthlib==2.1.0
 parsel==1.4.0
