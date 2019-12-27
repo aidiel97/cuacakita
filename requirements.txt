@@ -36,7 +36,7 @@ pytz==2018.7
 query-string==1.0.2
 queuelib==1.5.0
 request==1.0.2
-requests==2.19.1
+requests==2.20.0
 requests-oauthlib==1.0.0
 Sastrawi==1.0.1
 Scrapy==1.5.0
